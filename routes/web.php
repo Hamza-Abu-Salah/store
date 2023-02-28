@@ -23,7 +23,10 @@ use App\Http\Controllers\Admin\FinancialReportController;
 use App\Http\Controllers\Admin\Inv_production_exchangeController;
 use App\Http\Controllers\Admin\Inv_production_linesController;
 use App\Http\Controllers\Admin\inv_production_orderController;
+use App\Http\Controllers\Admin\inv_production_ReceiveController;
 use App\Http\Controllers\Admin\Inv_stores_inventoryController;
+use App\Http\Controllers\Admin\Inv_stores_transferController;
+use App\Http\Controllers\Admin\Inv_stores_transferIncomingController;
 use App\Http\Controllers\Admin\ItemcardBalance;
 use App\Http\Controllers\Admin\SalesInvoicesController;
 use App\Http\Controllers\Admin\SalesReturnInvoicesController;
@@ -424,8 +427,64 @@ Route::post('/inv_production_exchange/get_item_batches', [Inv_production_exchang
 Route::get('/inv_production_exchange/printsaleswina4/{id}/{size}', [Inv_production_exchangeController::class, 'printsaleswina4'])->name('inv_production_exchange.printsaleswina4');
 /*           end  Inv_production_exchange               */
 
+/*         start  inv_production_Receive    استلام منتج تام من خط الانتاج الانتاج - الورش            */
+Route::get('/inv_production_Receive/index', [inv_production_ReceiveController::class, 'index'])->name('inv_production_Receive.index');
+Route::get('/inv_production_Receive/create', [inv_production_ReceiveController::class, 'create'])->name('inv_production_Receive.create');
+Route::post('/inv_production_Receive/store', [inv_production_ReceiveController::class, 'store'])->name('inv_production_Receive.store');
+Route::get('/inv_production_Receive/edit/{id}', [inv_production_ReceiveController::class, 'edit'])->name('inv_production_Receive.edit');
+Route::post('/inv_production_Receive/update/{id}', [inv_production_ReceiveController::class, 'update'])->name('inv_production_Receive.update');
+Route::get('/inv_production_Receive/delete/{id}', [inv_production_ReceiveController::class, 'delete'])->name('inv_production_Receive.delete');
+Route::post('/inv_production_Receive/ajax_search', [inv_production_ReceiveController::class, 'ajax_search'])->name('inv_production_Receive.ajax_search');
+Route::get('/inv_production_Receive/show/{id}', [inv_production_ReceiveController::class, 'show'])->name('inv_production_Receive.show');
+Route::post('/inv_production_Receive/get_item_uoms', [inv_production_ReceiveController::class, 'get_item_uoms'])->name('inv_production_Receive.get_item_uoms');
+Route::post('/inv_production_Receive/load_modal_add_details', [inv_production_ReceiveController::class, 'load_modal_add_details'])->name('inv_production_Receive.load_modal_add_details');
+Route::post('/inv_production_Receive/add_new_details', [inv_production_ReceiveController::class, 'add_new_details'])->name('inv_production_Receive.add_new_details');
+Route::post('/inv_production_Receive/reload_itemsdetials', [inv_production_ReceiveController::class, 'reload_itemsdetials'])->name('inv_production_Receive.reload_itemsdetials');
+Route::post('/inv_production_Receive/reload_parent_pill', [inv_production_ReceiveController::class, 'reload_parent_pill'])->name('inv_production_Receive.reload_parent_pill');
+Route::post('/inv_production_Receive/load_edit_item_details', [inv_production_ReceiveController::class, 'load_edit_item_details'])->name('inv_production_Receive.load_edit_item_details');
+Route::post('/inv_production_Receive/edit_item_details', [inv_production_ReceiveController::class, 'edit_item_details'])->name('inv_production_Receive.edit_item_details');
+Route::get('/inv_production_Receive/delete_details/{id}/{id_parent}', [inv_production_ReceiveController::class, 'delete_details'])->name('inv_production_Receive.delete_details');
+Route::post('/inv_production_Receive/do_approve/{id}', [inv_production_ReceiveController::class, 'do_approve'])->name('inv_production_Receive.do_approve');
+Route::post('/inv_production_Receive/load_modal_approve_invoice', [inv_production_ReceiveController::class, 'load_modal_approve_invoice'])->name('inv_production_Receive.load_modal_approve_invoice');
+Route::post('/inv_production_Receive/load_usershiftDiv', [inv_production_ReceiveController::class, 'load_usershiftDiv'])->name('inv_production_Receive.load_usershiftDiv');
+Route::post('/inv_production_Receive/get_item_batches', [inv_production_ReceiveController::class, 'get_item_batches'])->name('inv_production_Receive.get_item_batches');
+Route::get('/inv_production_Receive/printsaleswina4/{id}/{size}', [inv_production_ReceiveController::class, 'printsaleswina4'])->name('inv_production_Receive.printsaleswina4');
+/*           end  inv_production_Receive               */
+/*         start  inv_stores_transfer       التحويل بين المخازن    */
+Route::get('/inv_stores_transfer/index', [Inv_stores_transferController::class, 'index'])->name('inv_stores_transfer.index');
+Route::get('/inv_stores_transfer/create', [Inv_stores_transferController::class, 'create'])->name('inv_stores_transfer.create');
+Route::post('/inv_stores_transfer/store', [Inv_stores_transferController::class, 'store'])->name('inv_stores_transfer.store');
+Route::get('/inv_stores_transfer/edit/{id}', [Inv_stores_transferController::class, 'edit'])->name('inv_stores_transfer.edit');
+Route::post('/inv_stores_transfer/update/{id}', [Inv_stores_transferController::class, 'update'])->name('inv_stores_transfer.update');
+Route::get('/inv_stores_transfer/delete/{id}', [Inv_stores_transferController::class, 'delete'])->name('inv_stores_transfer.delete');
+Route::post('/inv_stores_transfer/ajax_search', [Inv_stores_transferController::class, 'ajax_search'])->name('inv_stores_transfer.ajax_search');
+Route::get('/inv_stores_transfer/show/{id}', [Inv_stores_transferController::class, 'show'])->name('inv_stores_transfer.show');
+Route::post('/inv_stores_transfer/get_item_uoms', [Inv_stores_transferController::class, 'get_item_uoms'])->name('inv_stores_transfer.get_item_uoms');
+Route::post('/inv_stores_transfer/load_modal_add_details', [Inv_stores_transferController::class, 'load_modal_add_details'])->name('inv_stores_transfer.load_modal_add_details');
+Route::post('/inv_stores_transfer/Add_item_to_invoice', [Inv_stores_transferController::class, 'Add_item_to_invoice'])->name('inv_stores_transfer.Add_item_to_invoice');
+Route::post('/inv_stores_transfer/reload_itemsdetials', [Inv_stores_transferController::class, 'reload_itemsdetials'])->name('inv_stores_transfer.reload_itemsdetials');
+Route::post('/inv_stores_transfer/reload_parent_pill', [Inv_stores_transferController::class, 'reload_parent_pill'])->name('inv_stores_transfer.reload_parent_pill');
+Route::post('/inv_stores_transfer/load_edit_item_details', [Inv_stores_transferController::class, 'load_edit_item_details'])->name('inv_stores_transfer.load_edit_item_details');
+Route::post('/inv_stores_transfer/edit_item_details', [Inv_stores_transferController::class, 'edit_item_details'])->name('inv_stores_transfer.edit_item_details');
+Route::get('/inv_stores_transfer/delete_details/{id}/{id_parent}', [Inv_stores_transferController::class, 'delete_details'])->name('inv_stores_transfer.delete_details');
+Route::post('/inv_stores_transfer/do_approve/{id}', [Inv_stores_transferController::class, 'do_approve'])->name('inv_stores_transfer.do_approve');
+Route::post('/inv_stores_transfer/load_modal_approve_invoice', [Inv_stores_transferController::class, 'load_modal_approve_invoice'])->name('inv_stores_transfer.load_modal_approve_invoice');
+Route::post('/inv_stores_transfer/load_usershiftDiv', [Inv_stores_transferController::class, 'load_usershiftDiv'])->name('inv_stores_transfer.load_usershiftDiv');
+Route::post('/inv_stores_transfer/get_item_batches', [Inv_stores_transferController::class, 'get_item_batches'])->name('inv_stores_transfer.get_item_batches');
+Route::get('/inv_stores_transfer/printsaleswina4/{id}/{size}', [Inv_stores_transferController::class, 'printsaleswina4'])->name('inv_stores_transfer.printsaleswina4');
+/*           end  inv_stores_transfer               */
 
+/*         start  inv_stores_transfer_incoming         أوامر تحويل مخزنية واردة    */
+Route::get('/inv_stores_transfer_incoming/index', [Inv_stores_transferIncomingController::class, 'index'])->name('inv_stores_transfer_incoming.index');
+Route::post('/inv_stores_transfer_incoming/ajax_search', [Inv_stores_transferIncomingController::class, 'ajax_search'])->name('inv_stores_transfer_incoming.ajax_search');
+Route::get('/inv_stores_transfer_incoming/show/{id}', [Inv_stores_transferIncomingController::class, 'show'])->name('inv_stores_transfer_incoming.show');
+Route::get('/inv_stores_transfer_incoming/printsaleswina4/{id}/{size}', [Inv_stores_transferIncomingController::class, 'printsaleswina4'])->name('inv_stores_transfer_incoming.printsaleswina4');
+Route::get('/inv_stores_transfer_incoming/approve_one_details/{id}/{id_parent}', [Inv_stores_transferIncomingController::class, 'approve_one_details'])->name('inv_stores_transfer_incoming.approve_one_details');
+Route::get('/inv_stores_transfer_incoming/cancel_one_details/{id}/{id_parent}', [Inv_stores_transferIncomingController::class, 'cancel_one_details'])->name('inv_stores_transfer_incoming.cancel_one_details');
+Route::post('/inv_stores_transfer_incoming/load_cancel_one_details', [Inv_stores_transferIncomingController::class, 'load_cancel_one_details'])->name('inv_stores_transfer_incoming.load_cancel_one_details');
+Route::post('/inv_stores_transfer_incoming/do_cancel_one_details/{id}/{id_parent}', [Inv_stores_transferIncomingController::class, 'do_cancel_one_details'])->name('inv_stores_transfer_incoming.do_cancel_one_details');
 
+/*           end  inv_stores_transfer_incoming               */
 
 });
 
